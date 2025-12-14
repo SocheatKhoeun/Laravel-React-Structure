@@ -38,5 +38,8 @@ php artisan config:cache
 # Run the queue worker:
 php artisan queue:work
 
+# Error 
+mkdir -p storage/framework/views
+mkdir -p storage/framework/cache/data
 
 php artisan make:model YourModelName -mcr
