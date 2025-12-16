@@ -1,19 +1,9 @@
 import Breadcrumb from "@/Components/Breadcrumb";
 import InputError from "@/Components/InputError";
-import AdminLayout from "@/Layouts/AdminLayout";
+import AdminNavbar from '@/Layouts/AdminNavbar';
 import { Head, useForm } from "@inertiajs/react";
 
 export default function UsersCreateEdit({ user, roles }) {
-    // Default user object if not passed
-    user = user || {
-        id: null,
-        name: "",
-        email: "",
-        roles: [],
-        created_at: null,
-        status: 1,
-    };
-
     const { data, setData, post, patch, errors, reset, processing } = useForm({
         name: user.name ?? "",
         email: user.email ?? "",
@@ -48,7 +38,7 @@ export default function UsersCreateEdit({ user, roles }) {
     ];
 
     return (
-        <AdminLayout
+        <AdminNavbar
             breadcrumb={<Breadcrumb header={headWeb} links={linksBreadcrumb} />}
         >
             <Head title={headWeb} />
@@ -197,6 +187,6 @@ export default function UsersCreateEdit({ user, roles }) {
                     </div>
                 </div>
             </section>
-        </AdminLayout>
+        </AdminNavbar>
     );
 }

@@ -1,13 +1,9 @@
 import Breadcrumb from '@/Components/Breadcrumb';
 import DangerButton from '@/Components/DangerButton';
 import Modal from '@/Components/Modal';
-import NavLink from '@/Components/NavLink';
 import Pagination from '@/Components/Pagination';
-import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
-import SecondaryButtonLink from '@/Components/SecondaryButtonLink';
-import AdminLayout from '@/Layouts/AdminLayout';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AdminNavbar from '@/Layouts/AdminNavbar';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import moment from 'moment';
 import { useState } from 'react';
@@ -51,7 +47,7 @@ export default function UserPage({ roles }) {
     const linksBreadcrumb = [{ title: 'Home', url: '/' }, { title: headWeb, url: '' }];
 
     return (
-        <AdminLayout breadcrumb={<Breadcrumb header={headWeb} links={linksBreadcrumb} />} >
+        <AdminNavbar breadcrumb={<Breadcrumb header={headWeb} links={linksBreadcrumb} />} >
             <Head title={headWeb} />
             <section className="content">
                 <div className="row">
@@ -137,6 +133,6 @@ export default function UserPage({ roles }) {
                     </div>
                 </div>
             </section>
-        </AdminLayout>
+        </AdminNavbar>
     );
 }

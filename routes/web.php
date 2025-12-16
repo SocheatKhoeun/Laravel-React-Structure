@@ -1,36 +1,19 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\TwoFactorLoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController;
 use Laravel\Fortify\Http\Controllers\RecoveryCodeController;
 use Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController;
 use Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController;
 use Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-// Route::middleware(['auth', 'verified'])->group(function () {
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-});
+Route::redirect('/', '/home');
+Route::inertia('/home', 'Index')->name('home');
 
 // Google Authentication Routes
 Route::controller(GoogleController::class)->group(function () {
@@ -38,8 +21,11 @@ Route::controller(GoogleController::class)->group(function () {
     Route::get('auth/google/callback', 'handleGoogleCallback');
 });
 
-
+// Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware('auth')->group(function () {
+    
+    // Dashboard Route
+    Route::inertia('/dashboard', 'Dashboard/Index')->name('dashboard');
 
     // Roles Routes
     Route::prefix('roles')->group(function () {

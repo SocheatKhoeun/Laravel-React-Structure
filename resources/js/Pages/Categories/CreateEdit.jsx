@@ -1,13 +1,7 @@
 import Breadcrumb from '@/Components/Breadcrumb';
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import NavLink from '@/Components/NavLink';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import AdminLayout from '@/Layouts/AdminLayout';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Transition } from '@headlessui/react';
-import { Head, Link, useForm } from '@inertiajs/react';
+import AdminNavbar from '@/Layouts/AdminNavbar';
+import { Head, useForm } from '@inertiajs/react';
 
 export default function CategoriesCreateEdit({ datas }) {
     const { data, setData, post, patch, errors, reset, processing, recentlySuccessful } =
@@ -36,7 +30,7 @@ export default function CategoriesCreateEdit({ datas }) {
     const headWeb = 'Category Create'
     const linksBreadcrumb = [{ title: 'Home', url: '/' }, { title: headWeb, url: '' }];
     return (
-        <AdminLayout breadcrumb={<Breadcrumb header={headWeb} links={linksBreadcrumb} />} >
+        <AdminNavbar breadcrumb={<Breadcrumb header={headWeb} links={linksBreadcrumb} />} >
             <Head title={headWeb} />
             <section className="content">
                 <div className="row">
@@ -84,6 +78,6 @@ export default function CategoriesCreateEdit({ datas }) {
                     </div>
                 </div>
             </section>
-        </AdminLayout>
+        </AdminNavbar>
     );
 }

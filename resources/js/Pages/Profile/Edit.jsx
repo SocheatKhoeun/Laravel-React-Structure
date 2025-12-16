@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AdminNavbar from '@/Layouts/AdminNavbar';
 import { Head } from '@inertiajs/react';
 import DeleteUserForm from './Partials/DeleteUserForm';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm';
@@ -7,7 +7,7 @@ import TwoFactorAuthenticationForm from './Partials/TwoFactorAuthenticationForm'
 
 export default function Edit({ mustVerifyEmail, status }) {
     return (
-        <AuthenticatedLayout
+        <AdminNavbar
             header={
                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
                     Profile
@@ -38,6 +38,6 @@ export default function Edit({ mustVerifyEmail, status }) {
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </AdminNavbar>
     );
 }
